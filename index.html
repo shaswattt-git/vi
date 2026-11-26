@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title data-id="th-modified">Vishu, do you know you're beautiful? 💕</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    :root { --pink:#ff5c9a; --dark-pink:#e83d7c; --light-pink:#ffe5ef; --text:#66334a; }
+    html,body { margin:0; min-height:100%; }
+    body { min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; font-family:"Nunito",sans-serif; color:var(--text); background:radial-gradient(circle at 20% 20%,rgba(255,255,255,0.9) 0 5%,transparent 6%),linear-gradient(135deg,#ffd7e7,#fff0f6,#ffd1e4); }
+    .heart { position:fixed; bottom:-40px; font-size:24px; opacity:.5; pointer-events:none; animation:floatHeart linear infinite; z-index:1; }
+    .heart:nth-child(1){left:8%;animation-duration:7s;animation-delay:0s}.heart:nth-child(2){left:22%;animation-duration:9s;animation-delay:2s}.heart:nth-child(3){left:42%;animation-duration:8s;animation-delay:1s}.heart:nth-child(4){left:67%;animation-duration:10s;animation-delay:3s}.heart:nth-child(5){left:86%;animation-duration:8s;animation-delay:4s}
+    @keyframes floatHeart { 0%{transform:translateY(0) scale(.8) rotate(0);opacity:0}15%{opacity:.6}100%{transform:translateY(-110vh) scale(1.3) rotate(25deg);opacity:0} }
+    .card { position:relative;z-index:5;width:min(92vw,650px);min-height:650px;padding:42px 34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.84);border:3px solid rgba(255,92,154,.25);border-radius:35px;box-shadow:0 25px 70px rgba(170,62,105,.18),inset 0 0 40px rgba(255,255,255,.7);backdrop-filter:blur(12px);text-align:center; }
+    #question{width:100%;display:flex;flex-direction:column;align-items:center} h1{margin:0 0 12px;font-family:"Fredoka",sans-serif;font-size:clamp(1.85rem,5.5vw,3.15rem);line-height:1.08;color:var(--dark-pink);text-shadow:0 5px 0 rgba(255,255,255,.8)} .subtitle{margin:0 0 25px;font-size:1.05rem;font-weight:700;opacity:.72}
+    .gif-frame{position:relative;width:min(300px,75vw);height:220px;margin:5px 0 30px;border-radius:28px;overflow:hidden;background:linear-gradient(135deg,#ffd9e8,#fff);border:5px solid white;box-shadow:0 12px 30px rgba(190,67,116,.2),0 0 0 3px rgba(255,92,154,.13);animation:gifFloat 3.2s ease-in-out infinite,gifGlow 2s ease-in-out infinite}.gif-frame img{width:100%;height:100%;display:block;object-fit:cover}.gif-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.6) 45%,transparent 65%);transform:translateX(-120%);animation:gifShine 3.5s ease-in-out infinite}
+    @keyframes gifFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}} @keyframes gifGlow{0%,100%{box-shadow:0 12px 30px rgba(190,67,116,.2),0 0 0 3px rgba(255,92,154,.13)}50%{box-shadow:0 16px 38px rgba(190,67,116,.28),0 0 25px rgba(255,92,154,.25)}} @keyframes gifShine{0%{transform:translateX(-120%)}45%,100%{transform:translateX(120%)}}
+    .btn-row{position:relative;width:min(100%,520px);height:210px;overflow:hidden;border:3px dashed rgba(255,92,154,.22);border-radius:28px;background:rgba(255,235,243,.45);isolation:isolate}.buttons-label{position:absolute;top:12px;left:0;width:100%;font-size:.8rem;font-weight:800;opacity:.42;pointer-events:none}
+    button{border:none;outline:none;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:600;border-radius:18px;transition:width .35s ease,height .35s ease,font-size .35s ease,box-shadow .2s ease}
+    #yesBtn{position:absolute;width:150px;height:58px;background:linear-gradient(135deg,#ff5c9a,#ff3f87);color:white;font-size:24px;box-shadow:0 8px 0 #d83270,0 12px 25px rgba(255,63,135,.25);z-index:10;transform-origin:center;animation:yesPulse 1.7s ease-in-out infinite} #yesBtn:hover{filter:brightness(1.05);box-shadow:0 9px 0 #d83270,0 15px 30px rgba(255,63,135,.32)} #yesBtn:active{transform:translateY(4px);box-shadow:0 4px 0 #d83270,0 8px 18px rgba(255,63,135,.25)} @keyframes yesPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+    #noBtn{position:absolute;width:150px;height:58px;background:white;color:#d85b83;border:3px solid #ffabc8;font-size:20px;box-shadow:0 7px 0 #f4b1c9,0 10px 20px rgba(190,67,116,.12);z-index:20;touch-action:none;user-select:none} #noBtn:hover{background:#fff7fa}
+    #result{width:100%;display:none;flex-direction:column;align-items:center;justify-content:center} #result h2{margin:0 0 12px;font-family:"Fredoka",sans-serif;font-size:clamp(2.3rem,8vw,4.2rem);color:var(--dark-pink)} #result p{margin:0;font-size:1.15rem;font-weight:700}.result-heart{margin-top:18px;font-size:3rem;animation:heartBeat 1s ease-in-out infinite}@keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+    .confetti{position:fixed;top:-30px;width:10px;height:16px;pointer-events:none;z-index:100;animation:confettiFall 3s linear forwards}@keyframes confettiFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+    @media(max-width:600px){body{overflow:auto;padding:15px 0}.card{min-height:680px;padding:32px 18px}.gif-frame{height:190px;margin-bottom:25px}.btn-row{width:100%;height:220px}.subtitle{margin-bottom:18px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+  </style>
+  <meta property="og:title" content="Vishu, do you know you're beautiful? 💕" data-id="th-modified">
+  <meta name="description" content="do_you_know_youre_beautiful" data-id="th-modified">
+  <meta property="og:description" content="do_you_know_youre_beautiful" data-id="th-modified">
+  <meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified">
+  <meta property="og:image:width" content="1501" data-id="th-modified">
+  <meta property="og:image:height" content="1501" data-id="th-modified">
+  <meta property="og:image:type" content="image/png" data-id="th-modified">
+  <meta property="og:url" content="https://is-vu-beautiful.tiiny.site/" data-id="th-modified">
+  <meta property="og:type" content="website" data-id="th-modified">
+  <script defer="" data-domain="is-vu-beautiful.tiiny.site" src="https://analytics.tiiny.net/js/plausible.js"></script>
+  <script type="text/javascript" src="https://tiiny.host/ad-script.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <div style="position: fixed !important; bottom: 0% !important; left: 0% !important; right: 0% !important; width: 100% !important; height: 55px !important; z-index: 9999 !important;">
+    <a href="https://tiiny.host/fl?ref=free-site">
+      <div style="padding: 10px !important; height: 55px; text-align: center; background: rgb(220,137,232) !important; background: linear-gradient(141deg, rgba(220,137,232,1) 0%, rgba(144,64,204,1) 100%) !important;">
+        <img style="height: 35px !important; width: auto !important;" src="https://tiiny.host/assets/img/ad.png" alt="tiiny.host">
+      </div>
+    </a>
+  </div>
+  <div class="heart">💗</div><div class="heart">💕</div><div class="heart">💖</div><div class="heart">💞</div><div class="heart">💓</div>
+  <main class="card">
+    <section id="question">
+      <h1 class="  ablefocused">Vishu, do you know you're beautiful? 💕</h1>
+      <p class="subtitle">Don't even try to deny it... there's only one true answer 😌</p>
+      <div class="btn-row" id="buttonArena">
+        <div class="buttons-label">try pressing no 👀</div>
+        <button id="yesBtn" style="width: 150px; height: 58px; font-size: 24px; left: 5px; top: 95.5px;">YES 💖</button>
+        <button id="noBtn" style="width: 150px; height: 58px; font-size: 20px; left: 5px; top: 35px;">NO 😭</button>
+      </div>
+    </section>
+    <section id="result">
+      <div class="gif-frame"><img src="https://i.giphy.com/GK7dGndK4kyOozR9Xk.gif" alt="Happy dancing cat"></div>
+      <h2>YAY!!! 💕</h2><p>Good, because you really are 😌💖</p><div class="result-heart">💕</div>
+    </section>
+  </main>
+  <script>
+    const arena=document.getElementById("buttonArena"),yesBtn=document.getElementById("yesBtn"),noBtn=document.getElementById("noBtn"),question=document.getElementById("question"),result=document.getElementById("result");
+    const INITIAL_YES_WIDTH=150,INITIAL_YES_HEIGHT=58,MAX_YES_WIDTH=230,MAX_YES_HEIGHT=82,INITIAL_FONT_SIZE=24,MAX_FONT_SIZE=34;let noCount=0;
+    const noTexts=["NO 😭","stop lying 🥺","really?! 😭","look in a mirror 👀","wrong button 😌","nice try 😭","hehe nope","you can't deny it","PLEASE 😭","just admit it 💕"];
+    function clamp(value,min,max){return Math.min(Math.max(value,min),max)}
+    function positionButtonsInitially(){const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight,yesWidth=yesBtn.offsetWidth,yesHeight=yesBtn.offsetHeight,noWidth=noBtn.offsetWidth,noHeight=noBtn.offsetHeight,gap=18,totalWidth=yesWidth+gap+noWidth;let startX=(arenaWidth-totalWidth)/2;startX=clamp(startX,5,Math.max(5,arenaWidth-totalWidth-5));const availableTop=35,availableHeight=arenaHeight-availableTop,yesY=availableTop+Math.max(0,(availableHeight-yesHeight)/2),noY=availableTop+Math.max(0,(availableHeight-noHeight)/2);yesBtn.style.left=`${startX}px`;yesBtn.style.top=`${yesY}px`;noBtn.style.left=`${startX+yesWidth+gap}px`;noBtn.style.top=`${noY}px`}
+    function keepNoButtonInside(x,y){const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight,buttonWidth=noBtn.offsetWidth,buttonHeight=noBtn.offsetHeight,padding=5,minX=padding,minY=35,maxX=Math.max(minX,arenaWidth-buttonWidth-padding),maxY=Math.max(minY,arenaHeight-buttonHeight-padding);return{x:clamp(x,minX,maxX),y:clamp(y,minY,maxY)}}
+    function getYesRect(){const yesX=parseFloat(yesBtn.style.left)||0,yesY=parseFloat(yesBtn.style.top)||0;return{x:yesX,y:yesY,width:yesBtn.offsetWidth,height:yesBtn.offsetHeight}}
+    function overlapsYes(x,y){const yes=getYesRect(),noWidth=noBtn.offsetWidth,noHeight=noBtn.offsetHeight,gap=18;return !(x+noWidth+gap<yes.x||x>yes.x+yes.width+gap||y+noHeight+gap<yes.y||y>yes.y+yes.height+gap)}
+    function findSafeNoPosition(){const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight,minX=5,minY=35,maxX=Math.max(minX,arenaWidth-noBtn.offsetWidth-5),maxY=Math.max(minY,arenaHeight-noBtn.offsetHeight-5);for(let attempt=0;attempt<100;attempt++){const x=minX+Math.random()*(maxX-minX),y=minY+Math.random()*(maxY-minY);if(!overlapsYes(x,y))return{x,y}}const positions=[{x:minX,y:minY},{x:maxX,y:minY},{x:minX,y:maxY},{x:maxX,y:maxY}];for(const position of positions)if(!overlapsYes(position.x,position.y))return position;return{x:minX,y:minY}}
+    function moveNoButton(){const position=findSafeNoPosition();noBtn.style.left=`${position.x}px`;noBtn.style.top=`${position.y}px`;noCount++;growYesButton();changeNoText()}
+    function growYesButton(){const newWidth=Math.min(MAX_YES_WIDTH,INITIAL_YES_WIDTH+noCount*12),newHeight=Math.min(MAX_YES_HEIGHT,INITIAL_YES_HEIGHT+noCount*4),newFontSize=Math.min(MAX_FONT_SIZE,INITIAL_FONT_SIZE+noCount*1.5);yesBtn.style.width=`${newWidth}px`;yesBtn.style.height=`${newHeight}px`;yesBtn.style.fontSize=`${newFontSize}px`;repositionAfterGrowth()}
+    function repositionAfterGrowth(){const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight;let yesX=parseFloat(yesBtn.style.left)||0,yesY=parseFloat(yesBtn.style.top)||35;yesX=clamp(yesX,5,Math.max(5,arenaWidth-yesBtn.offsetWidth-5));yesY=clamp(yesY,35,Math.max(35,arenaHeight-yesBtn.offsetHeight-5));yesBtn.style.left=`${yesX}px`;yesBtn.style.top=`${yesY}px`;const noX=parseFloat(noBtn.style.left)||5,noY=parseFloat(noBtn.style.top)||35,safe=keepNoButtonInside(noX,noY);if(overlapsYes(safe.x,safe.y)){const newPosition=findSafeNoPosition();noBtn.style.left=`${newPosition.x}px`;noBtn.style.top=`${newPosition.y}px`}else{noBtn.style.left=`${safe.x}px`;noBtn.style.top=`${safe.y}px`}}
+    function changeNoText(){const index=Math.min(noCount,noTexts.length-1);noBtn.textContent=noTexts[index]}
+    noBtn.addEventListener("pointerenter",function(event){if(event.pointerType==="mouse")moveNoButton()});
+    noBtn.addEventListener("pointerdown",function(event){if(event.pointerType!=="mouse"){event.preventDefault();moveNoButton()}});
+    noBtn.addEventListener("click",function(event){event.preventDefault()});
+    yesBtn.addEventListener("click",function(){question.style.display="none";result.style.display="flex";document.title="Vishu knows she's beautiful!! 💕";createConfetti()});
+    function createConfetti(){const emojis=["💕","💖","💗","💓","✨","🎀","💞","🌸"];for(let i=0;i<80;i++){const piece=document.createElement("div");piece.className="confetti";piece.textContent=emojis[Math.floor(Math.random()*emojis.length)];piece.style.left=`${Math.random()*100}vw`;piece.style.animationDelay=`${Math.random()*1.5}s`;piece.style.fontSize=`${12+Math.random()*16}px`;document.body.appendChild(piece);setTimeout(()=>piece.remove(),5000)}}
+    function initialize(){yesBtn.style.width=`${INITIAL_YES_WIDTH}px`;yesBtn.style.height=`${INITIAL_YES_HEIGHT}px`;yesBtn.style.fontSize=`${INITIAL_FONT_SIZE}px`;noBtn.style.width="150px";noBtn.style.height="58px";noBtn.style.fontSize="20px";positionButtonsInitially()}
+    window.addEventListener("resize",function(){if(question.style.display==="none")return;const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight;let yesX=parseFloat(yesBtn.style.left)||0,yesY=parseFloat(yesBtn.style.top)||35;yesX=clamp(yesX,5,Math.max(5,arenaWidth-yesBtn.offsetWidth-5));yesY=clamp(yesY,35,Math.max(35,arenaHeight-yesBtn.offsetHeight-5));yesBtn.style.left=`${yesX}px`;yesBtn.style.top=`${yesY}px`;const noX=parseFloat(noBtn.style.left)||5,noY=parseFloat(noBtn.style.top)||35,safe=keepNoButtonInside(noX,noY);noBtn.style.left=`${safe.x}px`;noBtn.style.top=`${safe.y}px`;if(overlapsYes(safe.x,safe.y)){const newPosition=findSafeNoPosition();noBtn.style.left=`${newPosition.x}px`;noBtn.style.top=`${newPosition.y}px`}});
+    initialize();
+  </script>
+
+  <div style="height: 55px !important;"></div>
+</body>
+</html>
