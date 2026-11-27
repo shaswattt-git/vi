@@ -66,7 +66,7 @@
   <div class="heart">💗</div><div class="heart">💕</div><div class="heart">💖</div><div class="heart">💞</div><div class="heart">💓</div>
   <main class="card">
     <section id="question">
-      <h1 class="  ablefocused">Vishu, do you know you're beautiful? 💕</h1>
+      <h1 class="  ablefocused">Do you know you're beautiful? 💕</h1>
       <p class="subtitle">Don't even try to deny it... there's only one true answer 😌</p>
       <div class="btn-row" id="buttonArena">
         <div class="buttons-label">try pressing no 👀</div>
@@ -96,7 +96,7 @@
     noBtn.addEventListener("pointerenter",function(event){if(event.pointerType==="mouse")moveNoButton()});
     noBtn.addEventListener("pointerdown",function(event){if(event.pointerType!=="mouse"){event.preventDefault();moveNoButton()}});
     noBtn.addEventListener("click",function(event){event.preventDefault()});
-    yesBtn.addEventListener("click",function(){question.style.display="none";result.style.display="flex";document.title="Vishu knows she's beautiful!! 💕";createConfetti()});
+    yesBtn.addEventListener("click",function(){question.style.display="none";result.style.display="flex";document.title="She knows she's beautiful!! 💕";createConfetti()});
     function createConfetti(){const emojis=["💕","💖","💗","💓","✨","🎀","💞","🌸"];for(let i=0;i<80;i++){const piece=document.createElement("div");piece.className="confetti";piece.textContent=emojis[Math.floor(Math.random()*emojis.length)];piece.style.left=`${Math.random()*100}vw`;piece.style.animationDelay=`${Math.random()*1.5}s`;piece.style.fontSize=`${12+Math.random()*16}px`;document.body.appendChild(piece);setTimeout(()=>piece.remove(),5000)}}
     function initialize(){yesBtn.style.width=`${INITIAL_YES_WIDTH}px`;yesBtn.style.height=`${INITIAL_YES_HEIGHT}px`;yesBtn.style.fontSize=`${INITIAL_FONT_SIZE}px`;noBtn.style.width="150px";noBtn.style.height="58px";noBtn.style.fontSize="20px";positionButtonsInitially()}
     window.addEventListener("resize",function(){if(question.style.display==="none")return;const arenaWidth=arena.clientWidth,arenaHeight=arena.clientHeight;let yesX=parseFloat(yesBtn.style.left)||0,yesY=parseFloat(yesBtn.style.top)||35;yesX=clamp(yesX,5,Math.max(5,arenaWidth-yesBtn.offsetWidth-5));yesY=clamp(yesY,35,Math.max(35,arenaHeight-yesBtn.offsetHeight-5));yesBtn.style.left=`${yesX}px`;yesBtn.style.top=`${yesY}px`;const noX=parseFloat(noBtn.style.left)||5,noY=parseFloat(noBtn.style.top)||35,safe=keepNoButtonInside(noX,noY);noBtn.style.left=`${safe.x}px`;noBtn.style.top=`${safe.y}px`;if(overlapsYes(safe.x,safe.y)){const newPosition=findSafeNoPosition();noBtn.style.left=`${newPosition.x}px`;noBtn.style.top=`${newPosition.y}px`}});
